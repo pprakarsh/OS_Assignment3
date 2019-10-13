@@ -4,6 +4,8 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 #include<string.h>
+#include<sys/ipc.h>
+#include<unistd.h>
 
 char flag_exit = '0';
 char flag_log = '0';
