@@ -1,0 +1,62 @@
+
+[viewcmdlog]
+changedir Testing1
+unlog
+changedir Testing
+viewcmdlog
+exit
+changedir Testing
+changedir Testing2
+viewcmdlog
+exit
+changedir Testing1
+viewcmdlog
+viewoutlog
+unlog
+changdir ..
+changedir ..
+unlog
+changedir Testing1
+viewcmdlog
+viewoutlog
+changedir    ..
+viewcmdlog
+unlog
+chdir Testing1
+changedir Testing1
+exit
+Success
+changedir ..Success
+changedir OS_Assignment3Success
+viewcmdlogSuccess
+logSuccess
+changedir ..Success
+changedir OS_Assignment3/Testing1Success
+viewcmdlogSuccess
+exit	Success
+changedir ..	13/09/119	23:48:32	Success
+changedir OS_Assignment2	13/09/119	23:48:49	Success
+changedir Testing1	13/09/119	23:48:58	Success
+viewcmdlog	13/09/119	23:49:07	Success
+chadir ..	13/09/119	23:49:24	Failure
+viewcmdlog	13/09/119	23:49:30	Success
+viewcmdlog	13/09/119	23:51:26	Success
+exit	13/09/119	23:52:18	Success
+	Success
+viewcmdlog	13/09/0119	23:53:02	Success
+viewcmdlog	13/09/0119	23:55:05	Success
+exit	13/09/0119	23:55:13	Success
+viewcmdlog	13/09/2019	23:55:23	Success
+viewcmdlog	13/09/2019	23:55:28	Success
+exit	13/09/2019	23:55:31	Success
+changedir Testing1	13/09/2019	23:58:55	Success
+viewcmdlog	13/09/2019	23:58:59	Success
+viewoutlog	13/09/2019	23:59:07	Success
+exit	13/09/2019	23:59:37	Success
+	Success
+	Success
+	Success
+	Success
+changedir ..	14/09/2019	00:01:45	Success
+changedir ..	14/09/2019	00:01:58	Success
+viewcmdlog	14/09/2019	00:02:14
