@@ -1,0 +1,13 @@
+total 52
+-rwxr-xr-x 1 prakarsh prakarsh 12928 Oct 14 13:32 a.out
+-rw-r--r-- 1 prakarsh prakarsh  1414 Oct 14 00:02 commands.log
+-rw-r--r-- 1 prakarsh prakarsh     0 Oct 14 13:32 file.txt
+-rw-r--r-- 1 prakarsh prakarsh  1356 Oct 14 00:02 output.log
+-rw-r--r-- 1 prakarsh prakarsh  1383 Oct 13 16:29 Problem3.c
+-rw-r--r-- 1 prakarsh prakarsh   210 Oct 13 17:46 Problem4_getline.c
+-rw-r--r-- 1 prakarsh prakarsh  2915 Oct 14 00:12 Problem4_intcommands.c
+-rw-r--r-- 1 prakarsh prakarsh  1627 Oct 14 13:32 Problem4_pipefile.c
+-rw-r--r-- 1 prakarsh prakarsh  1729 Oct 14 10:30 Problem4_piping.c
+-rw-r--r-- 1 prakarsh prakarsh     0 Oct 14 13:32 temp.txt
+drwxr-xr-x 2 prakarsh prakarsh  4096 Oct 13 21:19 Testing1
+drwxr-xr-x 2 prakarsh prakarsh  4096 Oct 13 21:19 Testing2

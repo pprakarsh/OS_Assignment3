@@ -61,9 +61,63 @@ int main()
 	char* command = inputConsole();	
 	int count;
 	char** cmd_arr = strFactoring(command, &count, "|");
-	
-	/*for(int i = 0; i < count; i++)
+
+	FILE* fp = fopen("file.txt", "w+");
+	FILE* temp = fopen("temp.txt", "w+");
+
+	for(int i = 0; i < count; i++)
 	{
-		printf("%s \n", cmd_arr[i]);
-	}*/
+		if(fork())
+		{
+			while(wait(NULL) != -1);
+			if(i == 0)
+			{
+				while(wait(NULL) != -1);
+				fseek(fp, 0, SEEK_SET);
+				char c = fgetc(fp); 
+		    		while (c != EOF) 
+		    		{ 
+					printf ("%c", c); 
+					c = fgetc(fp); 
+		    		}
+				fclose(fp);
+				exit(0);
+			}
+			else if( i != count-1)
+			{
+				while(wait(NULL) != -1);
+				fclose(temp);
+				temp = fopen("temp.txt", "w+");
+				
+				fseek(fp, 0, SEEK_SET);
+				char c = fgetc(fp);
+				while (c != EOF)
+				{
+					fputc(c, temp);
+					c = fgetc(fp);
+					printf("%c", c);
+				}
+
+				fclose(fp);
+				fp = fopen("file.txt", "w+");
+				fseek(temp, 0, SEEK_SET);
+				dup2(fileno(fp), 1);
+				dup2(fileno(temp), 0);
+				execlp("/bin/grep", "grep", "-v", "/", NULL);
+			}
+			else
+			{
+				dup2(fileno(fp), 1);
+				execlp("/bin/ls", "ls", "-l", NULL);
+			}
+		}
+		else
+		{
+			continue;	
+		}
+	}
+
+	//only the last process  and first process reaches here, others exit from inside the loop
+	
+	//writes to the topmost process which the topmost process reads and gives final output
 }
