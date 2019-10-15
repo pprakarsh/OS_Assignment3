@@ -198,17 +198,11 @@ int main()
 						int count;
 						char** cmd_arr = strFactoring(command, &count, "|");
 
-						/*for(int i = 0; i < count; i++)
-						{
-							printf("%s\n", cmd_arr[i]);
-						}*/
-
 						FILE* fp = fopen("file.txt", "w+");
 						FILE* temp = fopen("temp.txt", "w+");
 						
 						for(int i = 0; i <= count; i++)
 						{
-							printf("Hi %d   %d\n", i, getpid());
 							int cnt;
 							if(fork())
 							{
@@ -245,28 +239,14 @@ int main()
 									dup2(fileno(fp), 1);
 									dup2(fileno(temp), 0);
 									
-									//execlp("/bin/grep", "grep", "Prob", NULL);
-									//char arr[100];
-									//strcpy(arr, "grep Prob");
-									//char** temp = strFactoring(cmd_arr[count-i], &cnt, " ");
-									//printf("%d cnt\n", cnt);
-									//for(int j = 0; j < cnt; j++)
-									//{
-									//	printf("temp[%d]: %st\n", j, temp[j]);
-									//}
-									//printf("%sz\n", firstword(cmd_arr[count-i]));
 									char arr[100];
 									strcpy(arr, cmd_arr[count-i]);
-									//execvp(firstword(cmd_arr[count-i]), strFactoring(cmd_arr[count-i], &cnt, " "));
 									execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));
-									//execvp("grep", strFactoring(cmd_arr[count-i], &cnt, " "));
-									//char const* argv[] = {"grep", "Prob", 0};
-									//execvp("grep", argv);
 								}
 								else
 								{
 									while(wait(NULL) != -1);
-									//dup2(fileno(fp), 1);
+									dup2(fileno(fp), 1);
 									char arr[100];
 									strcpy(arr, cmd_arr[count-i]);
 									execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));
@@ -278,6 +258,10 @@ int main()
 								{
 										dup2(fileno(fp), 1);
 										execvp(firstword(cmd_arr[count-i-1]), strFactoring(cmd_arr[count-i-1], &cnt, " "));
+								}
+								if(i == count)
+								{
+									exit(0);
 								}
 							}
 						}
