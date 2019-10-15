@@ -1,5 +1,1 @@
--rw-r--r-- 1 prakarsh prakarsh  1383 Oct 13 16:29 Problem3.c
--rw-r--r-- 1 prakarsh prakarsh   210 Oct 13 17:46 Problem4_getline.c
--rw-r--r-- 1 prakarsh prakarsh  2915 Oct 14 00:12 Problem4_intcommands.c
--rw-r--r-- 1 prakarsh prakarsh  1627 Oct 14 13:32 Problem4_pipefile.c
--rw-r--r-- 1 prakarsh prakarsh  1729 Oct 14 10:30 Problem4_piping.c
+2

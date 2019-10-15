@@ -40,7 +40,7 @@ char** strFactoring(char* command, int* count, char delim[])
 		(*count)++;
 	}
 
-	char** cmd_arr = (char** )malloc(sizeof(char*)*(*count));
+	char** cmd_arr = (char** )malloc(sizeof(char*)*(*count+1));
 
 
 	ptr = strtok(cmd_cpy, delim);
@@ -49,27 +49,60 @@ char** strFactoring(char* command, int* count, char delim[])
 	{
 		cmd_arr[i] = (char* )malloc(sizeof(char)*strlen(ptr));
 		strcpy(cmd_arr[i], ptr);
-		printf("%s\n", cmd_arr[i]);
 		ptr = strtok(NULL, delim);
 		i++;
 	}
+	cmd_arr[*count] = NULL;
 	return cmd_arr;	
 
 }
+char* firstword(char* str)
+{
+	if(str[0] == ' ')
+	{
+		for(int i = 0; i < strlen(str)-1; i++)
+		{
+			str[i] = str[i+1];
+			if(str[i+1] == ' ')
+			{
+				str[i] = '\0';
+				break;
+			}
+		}
+		return str;	
+	}
+
+	for(int i = 0; i < strlen(str); i++)
+	{
+		if(str[i] == ' ')
+		{
+			str[i] = '\0';
+			break;
+		}
+	}
+	return str;
+}
+
 int main()
 {
 	char* command = inputConsole();	
 	int count;
 	char** cmd_arr = strFactoring(command, &count, "|");
 
+	/*for(int i = 0; i < count; i++)
+	{
+		printf("%s\n", cmd_arr[i]);
+	}*/
+
 	FILE* fp = fopen("file.txt", "w+");
 	FILE* temp = fopen("temp.txt", "w+");
-
-	for(int i = 0; i < count; i++)
+	
+	for(int i = 0; i <= count; i++)
 	{
+		printf("Hi %d   %d\n", i, getpid());
+		int cnt;
 		if(fork())
 		{
-			while(wait(NULL) != -1);
 			if(i == 0)
 			{
 				while(wait(NULL) != -1);
@@ -83,7 +116,7 @@ int main()
 				fclose(fp);
 				exit(0);
 			}
-			else if( i != count-1)
+			else if(i != count)
 			{
 				while(wait(NULL) != -1);
 				fclose(temp);
@@ -95,7 +128,6 @@ int main()
 				{
 					fputc(c, temp);
 					c = fgetc(fp);
-					printf("%c", c);
 				}
 
 				fclose(fp);
@@ -103,21 +135,41 @@ int main()
 				fseek(temp, 0, SEEK_SET);
 				dup2(fileno(fp), 1);
 				dup2(fileno(temp), 0);
-				execlp("/bin/grep", "grep", "-v", "/", NULL);
+				
+				//execlp("/bin/grep", "grep", "Prob", NULL);
+				//char arr[100];
+				//strcpy(arr, "grep Prob");
+				//char** temp = strFactoring(cmd_arr[count-i], &cnt, " ");
+				//printf("%d cnt\n", cnt);
+				//for(int j = 0; j < cnt; j++)
+				//{
+				//	printf("temp[%d]: %st\n", j, temp[j]);
+				//}
+				//printf("%sz\n", firstword(cmd_arr[count-i]));
+				char arr[100];
+				strcpy(arr, cmd_arr[count-i]);
+				//execvp(firstword(cmd_arr[count-i]), strFactoring(cmd_arr[count-i], &cnt, " "));
+				execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));
+				//execvp("grep", strFactoring(cmd_arr[count-i], &cnt, " "));
+				//char const* argv[] = {"grep", "Prob", 0};
+				//execvp("grep", argv);
 			}
 			else
 			{
+				while(wait(NULL) != -1);
 				dup2(fileno(fp), 1);
-				execlp("/bin/ls", "ls", "-l", NULL);
+				char arr[100];
+				strcpy(arr, cmd_arr[count-i]);
+				execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));
 			}
 		}
 		else
 		{
-			continue;	
+			if(count == 1)
+			{
+					dup2(fileno(fp), 1);
+					execvp(firstword(cmd_arr[count-i-1]), strFactoring(cmd_arr[count-i-1], &cnt, " "));
+			}
 		}
 	}
-
-	//only the last process  and first process reaches here, others exit from inside the loop
-	
-	//writes to the topmost process which the topmost process reads and gives final output
 }

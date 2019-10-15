@@ -7,6 +7,50 @@
 #include<sys/ipc.h>
 #include<unistd.h>
 
+char* firstword(char* str)
+{
+	for(int i = 0; i < strlen(str); i++)
+	{
+		if(str[i] == ' ')
+		{
+			str[i] = '\0';
+			break;
+		}
+	}
+	return str;
+}
+
+char** strFactoring(char* command, int* count, char delim[])
+{
+	char cmd_cpy[200];
+	strcpy(cmd_cpy, command);
+
+	char *ptr = strtok(command, delim);
+
+	*count = 0;
+	while(ptr != NULL)
+	{
+		ptr = strtok(NULL, delim);
+		(*count)++;
+	}
+
+	char** cmd_arr = (char** )malloc(sizeof(char*)*(*count));
+
+
+	ptr = strtok(cmd_cpy, delim);
+	int i = 0;
+	while(ptr != NULL)
+	{
+		cmd_arr[i] = (char* )malloc(sizeof(char)*strlen(ptr));
+		strcpy(cmd_arr[i], ptr);
+		printf("%s\n", cmd_arr[i]);
+		ptr = strtok(NULL, delim);
+		i++;
+	}
+	return cmd_arr;	
+
+}
+
 int main()
 {
 	FILE* fp = fopen("file.txt", "w+");
@@ -14,18 +58,6 @@ int main()
 
 	if(fork())
 	{
-		while(wait(NULL) != -1);
-		//Read from last cmd in pipe
-		    printf("hello main\n");
-		fseek(fp, 0, SEEK_SET);
-		char c = fgetc(fp); 
-		    while (c != EOF) 
-		    { 
-			printf ("%c", c); 
-			c = fgetc(fp); 
-		    }
-		    fclose(fp);
-		    exit(0);
 	}
 	else
 	{
@@ -51,6 +83,8 @@ int main()
 					fseek(temp, 0, SEEK_SET);
 				    dup2(fileno(fp), 1);
 				    dup2(fileno(temp), 0);
+
+				    strFactoring("")
 				execlp("/bin/grep", "grep", "Prob", NULL);
 
 		}
