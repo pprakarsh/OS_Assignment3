@@ -65,29 +65,21 @@ char** strFactoring(char* command, int* count, char delim[])
 
 char* firstword(char* str)
 {
-	if(str[0] == ' ')
+	int offset = 0;
+	while(str[offset] == ' ')
 	{
-		for(int i = 0; i < strlen(str)-1; i++)
-		{
-			str[i] = str[i+1];
-			if(str[i+1] == ' ')
-			{
-				str[i] = '\0';
-				break;
-			}
-		}
-		return str;	
+		offset++;	
 	}
-
-	for(int i = 0; i < strlen(str); i++)
+	for(int i = 0; i < strlen(str)-offset; i++)
 	{
-		if(str[i] == ' ')
+		str[i] = str[i+offset];
+		if(str[i+offset] == ' ')
 		{
 			str[i] = '\0';
 			break;
 		}
 	}
-	return str;
+	return str;	
 }
 
 char* cwd()
@@ -132,17 +124,12 @@ void viewoutlog(FILE* fplog_out)
 
 void changedir(char* inp, FILE* fplog_cmd)
 {
-	char* str_temp = (char* )malloc(sizeof(char)*30);
-	strcpy(str_temp, inp);
-	if(strcmp(firstword(str_temp), "changedir") == 0)
-	{
 		char delim[] = " ";
 		char* ptr = strtok(inp, delim);
 		char* dir = strtok(NULL, delim);
 
 		chdir(dir);
 		//change directory
-	}
 }
 
 int main()
@@ -197,9 +184,12 @@ int main()
 				}
 				else
 				{
-					if(strcmp(inp, "changedir") == 0)
+					char* str_temp = (char* )malloc(sizeof(char)*30);
+					strcpy(str_temp, inp);
+					if(strcmp(firstword(str_temp), "changedir") == 0)
 					{
 						changedir(inp, fplog_cmd);
+					
 					}
 					else
 					{
@@ -233,7 +223,7 @@ int main()
 										c = fgetc(fp); 
 									}
 									fclose(fp);
-									exit(0);
+									break;
 								}
 								else if(i != count)
 								{
@@ -276,7 +266,7 @@ int main()
 								else
 								{
 									while(wait(NULL) != -1);
-									dup2(fileno(fp), 1);
+									//dup2(fileno(fp), 1);
 									char arr[100];
 									strcpy(arr, cmd_arr[count-i]);
 									execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));

@@ -1,1 +1,12 @@
-2
+a.out
+commands.log
+file.txt
+output.log
+Problem3.c
+Problem4_getline.c
+Problem4_intcommands.c
+Problem4_pipefile.c
+Problem4_piping.c
+temp.txt
+Testing1/
+Testing2/

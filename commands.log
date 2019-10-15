@@ -70,4 +70,19 @@ unlog	15/09/2019	11:04:44	Success
 	Success
 ls | grep Prob	15/09/2019	11:27:52	Success
 ls	15/09/2019	11:28:07	Success
-ls | grep Prob	15/09/2019	11:27:52
+ls | grep Prob	15/09/2019	11:27:52	Success
+ls | grep Prob	15/09/2019	11:49:33	Success
+ls	15/09/2019	11:49:36	Success
+ls | grep Prob	15/09/2019	11:49:33	Success
+ls	15/09/2019	11:57:20	Success
+ls | grep Prob	15/09/2019	11:57:26	Success
+ls | grep Prob	15/09/2019	11:58:17	Success
+exit	15/09/2019	11:58:21	Success
+ls	15/09/2019	11:57:20	Success
+ls | grep Prob	15/09/2019	11:57:26	Success
+ls | grep Prob	15/09/2019	11:58:17	Success
+exit	15/09/2019	11:58:41	Success
+ls	15/09/2019	11:57:20	Success
+ls | grep Prob	15/09/2019	11:57:26	Success
+exit	15/09/2019	11:58:43	Success
+	Success

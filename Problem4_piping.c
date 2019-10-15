@@ -58,29 +58,21 @@ char** strFactoring(char* command, int* count, char delim[])
 }
 char* firstword(char* str)
 {
-	if(str[0] == ' ')
+	int offset = 0;
+	while(str[offset] == ' ')
 	{
-		for(int i = 0; i < strlen(str)-1; i++)
-		{
-			str[i] = str[i+1];
-			if(str[i+1] == ' ')
-			{
-				str[i] = '\0';
-				break;
-			}
-		}
-		return str;	
+		offset++;	
 	}
-
-	for(int i = 0; i < strlen(str); i++)
+	for(int i = 0; i < strlen(str)-offset; i++)
 	{
-		if(str[i] == ' ')
+		str[i] = str[i+offset];
+		if(str[i+offset] == ' ')
 		{
 			str[i] = '\0';
 			break;
 		}
 	}
-	return str;
+	return str;	
 }
 
 int main()

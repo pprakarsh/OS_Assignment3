@@ -1,2 +1,0 @@
-Problem4_pipefile.c
-Problem4_piping.c
