@@ -7,6 +7,14 @@
 #include<sys/ipc.h>
 #include<unistd.h>
 
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
+
 char flag_exit = '0';
 char flag_log = '0';
 
@@ -136,10 +144,11 @@ int main()
 {
 	fplog_cmd = fopen("commands.log", "a+");
 	fplog_out = fopen("output.log", "a+");
+	printf(ANSI_COLOR_MAGENTA "\n\t\t\tMY TERMINAL" ANSI_COLOR_RESET "\n\n");
 	while(1)
 	{
 		char* str = cwd();
-		printf(" %s:$ ", str);
+		printf(ANSI_COLOR_GREEN " %s:$ " ANSI_COLOR_RESET, str);
 		free(str);
 		char* inp_st = inputConsole();
 
@@ -149,7 +158,7 @@ int main()
 			{
 				char* action = "Success";
 				char* str = cwd();
-				printf(" %s:$ ", str);
+				printf(ANSI_COLOR_GREEN " %s:$ " ANSI_COLOR_RESET, str);
 				free(str);
 
 				//Command Interpretor starts, flag for exit command required
@@ -242,6 +251,10 @@ int main()
 									char arr[100];
 									strcpy(arr, cmd_arr[count-i]);
 									execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));
+									printf(ANSI_COLOR_RED "Wrong Command!\n" ANSI_COLOR_RESET);
+									action = "Failure";
+									exit(0);
+
 								}
 								else
 								{
@@ -250,6 +263,9 @@ int main()
 									char arr[100];
 									strcpy(arr, cmd_arr[count-i]);
 									execvp(firstword(arr), strFactoring(cmd_arr[count-i], &cnt, " "));
+									printf(ANSI_COLOR_RED "Wrong Command!\n" ANSI_COLOR_RESET);
+									action = "Failure";
+									exit(0);
 								}
 							}
 							else
@@ -258,6 +274,9 @@ int main()
 								{
 										dup2(fileno(fp), 1);
 										execvp(firstword(cmd_arr[count-i-1]), strFactoring(cmd_arr[count-i-1], &cnt, " "));
+										printf(ANSI_COLOR_RED "Wrong Command!\n" ANSI_COLOR_RESET);
+										action = "Failure";
+										exit(0);
 								}
 								if(i == count)
 								{

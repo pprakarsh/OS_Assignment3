@@ -1,5 +1,2 @@
-Problem3.c
-Problem4_getline.c
-Problem4_intcommands.c
-Problem4_pipefile.c
-Problem4_piping.c
+[31mWrong Command!
+[0m
