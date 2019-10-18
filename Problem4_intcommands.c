@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include "search.h"
 #include<time.h>
 #include<stdlib.h>
 #include<sys/types.h>
@@ -195,10 +196,17 @@ int main()
 				{
 					char* str_temp = (char* )malloc(sizeof(char)*30);
 					strcpy(str_temp, inp);
-					if(strcmp(firstword(str_temp), "changedir") == 0)
+					char* fw = firstword(str_temp);
+					if(strcmp(fw, "changedir") == 0)
 					{
 						changedir(inp, fplog_cmd);
 					
+					}
+					else if(strcmp(fw, "search") == 0)
+					{
+						int cnt;
+						char** file = strFactoring(inp, &cnt, " ");
+						search(file[1]);
 					}
 					else
 					{
