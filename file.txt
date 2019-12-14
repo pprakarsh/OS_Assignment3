@@ -1,6 +1,6 @@
--rw-r--r-- 1 prakarsh prakarsh  4903 Oct 18 14:25 Problem2_rough.c
--rw-r--r-- 1 prakarsh prakarsh  1383 Oct 13 16:29 Problem3.c
--rw-r--r-- 1 prakarsh prakarsh   210 Oct 13 17:46 Problem4_getline.c
--rw-r--r-- 1 prakarsh prakarsh  6137 Oct 18 14:14 Problem4_intcommands.c
--rw-r--r-- 1 prakarsh prakarsh  2080 Oct 15 09:46 Problem4_pipefile.c
--rw-r--r-- 1 prakarsh prakarsh  3224 Oct 15 11:59 Problem4_piping.c
+Problem2_rough.c
+Problem3.c
+Problem4_getline.c
+Problem4_intcommands.c
+Problem4_pipefile.c
+Problem4_piping.c

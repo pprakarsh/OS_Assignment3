@@ -10,7 +10,7 @@
 	};
 
 	void changeMarks(char* name, char* marks, struct shm_foundInfo* ptr_shm);
-	char recurseDir(char buffer[], struct shm_foundInfor* ptr_shm);
+	char recurseDir(char buffer[], struct shm_foundInfo* ptr_shm);
 	void SearchFile(char* path, struct shm_foundInfo* ptr_shm);
 	void search(char filename[100]);
 

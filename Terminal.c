@@ -5,6 +5,10 @@
 #include<sys/types.h>
 #include<sys/wait.h>
 #include<string.h>
+#include<sys/ipc.h>
+#include<unistd.h>
+
+#define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
 #define ANSI_COLOR_BLUE    "\x1b[34m"
@@ -198,12 +202,12 @@ int main()
 						changedir(inp, fplog_cmd);
 					
 					}
-					else if(strcmp(fw, "search") == 0)
+					/*else if(strcmp(fw, "search") == 0)
 					{
 						int cnt;
 						char** file = strFactoring(inp, &cnt, " ");
 						search(file[1]);
-					}
+					}*/
 					else
 					{
 						char command[200];

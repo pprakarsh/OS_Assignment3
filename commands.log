@@ -1216,3 +1216,99 @@ ls -l | grep Proble	18/09/2019	14:26:17	Success
 	Success
 	Success
 	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+exit	28/09/2019	17:14:54	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+changedir testing1	31/09/2019	11:45:38	Success
+changedir Testing1	31/09/2019	11:45:43	Success
+changedir ..	31/09/2019	11:45:50	Success
+ls	31/09/2019	11:45:57	Success
+gcc Problem4_intcommands.c	31/09/2019	11:46:31	Success
+pwd	31/09/2019	11:47:13	Success
+viewlog	31/09/2019	11:47:24	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+changedir testing1	31/09/2019	11:45:38	Success
+changedir Testing1	31/09/2019	11:45:43	Success
+changedir ..	31/09/2019	11:45:50	Success
+ls	31/09/2019	11:45:57	Success
+gcc Problem4_intcommands.c	31/09/2019	11:46:31	Success
+pwd	31/09/2019	11:47:13	Success
+viewlog	31/09/2019	11:47:24	Success
+viewcmdlog	31/09/2019	11:48:10	Success
+	31/09/2019	11:48:43	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
+	Success
